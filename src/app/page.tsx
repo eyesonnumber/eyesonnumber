@@ -3,7 +3,7 @@ import "../../styles/globals.css";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 bg-[#fff099]">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fff099]">
       <h1 className="text-2xl font-bold mb-4 text-bold text-[#a38800]">Eyes on Number</h1>
       <div className="flex flex-col gap-4 p-8 font-light">
         <text>

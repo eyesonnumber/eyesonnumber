@@ -1,4 +1,7 @@
-import NameCalculator from "@/components/NameCalculator";
+'use client'
+
+import NameCalculator from "@/src/components/NameCalculator";
+
 
 const NameCalculatorPage = () => {
   return (

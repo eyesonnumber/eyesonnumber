@@ -3,8 +3,8 @@ import "../../styles/globals.css";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4 text-bold">Eyes on Number</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 bg-[#fff099]">
+      <h1 className="text-2xl font-bold mb-4 text-bold text-[#a38800]">Eyes on Number</h1>
       <div className="flex flex-col gap-4 p-8 font-light">
         <text>
           Welcome to eyesonnumber, where the mystical world of numerology and
@@ -21,15 +21,15 @@ const Home = () => {
         <div className="flex gap-8">
           <Link
             href="/psychic-destiny"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-60 text-center font-bold hover:scale-105 transform transition duration-300 ease-in-out"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-72 text-center font-bold hover:scale-105 transform transition duration-300 ease-in-out"
           >
-            Go to DOB Calculator
+            Mulank/Bhagyank Calculator
           </Link>
           <Link
             href="/name-calculator"
             className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-60 text-center font-bold hover:scale-105 transform transition duration-300 ease-in-out"
           >
-            Go to Name calculator
+            Name calculator
           </Link>
         </div>
       </div>

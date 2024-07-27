@@ -1,10 +1,16 @@
+'use client'
+
 import Link from "next/link";
 import "../../styles/globals.css";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+
 
 const Home = () => {
+ const router = useRouter()
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fff099]">
-      <h1 className="text-2xl font-bold mb-4 text-bold text-[#a38800]">Eyes on Number</h1>
+      <h1 className="text-2xl font-bold mb-4 text-bold text-brand-700">Eyes on Number</h1>
       <div className="flex flex-col gap-4 p-8 font-light">
         <text>
           Welcome to eyesonnumber, where the mystical world of numerology and
@@ -19,18 +25,8 @@ const Home = () => {
           path to self-discovery and cosmic harmony today!
         </text>
         <div className="flex gap-8">
-          <Link
-            href="/psychic-destiny"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-72 text-center font-bold hover:scale-105 transform transition duration-300 ease-in-out"
-          >
-            Mulank/Bhagyank Calculator
-          </Link>
-          <Link
-            href="/name-calculator"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-60 text-center font-bold hover:scale-105 transform transition duration-300 ease-in-out"
-          >
-            Name calculator
-          </Link>
+          <Button onClick={() => router.push('/psychic-destiny')} className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out">Mulank/Bhagyank Calculator</Button>
+          <Button onClick={() => router.push('/name-calculator')} className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out">Name calculator</Button>
         </div>
       </div>
     </div>

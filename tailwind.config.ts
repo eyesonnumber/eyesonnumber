@@ -10,6 +10,20 @@ const config = {
 	],
   prefix: "",
   theme: {
+    colors:{
+      brand:{
+        50:'#fff9d6',
+        100:'#FFF099',
+        200:'#FFE75C',
+        300:'#FFE033',
+        400:'#FFD700',
+        500:'#E8C300',
+        600:'#CCAA00',
+        700:'#A38800',
+        800:'#8F7700',
+        900:'#7A6600'
+      }
+    },
     container: {
       center: true,
       padding: "2rem",

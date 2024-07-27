@@ -2,6 +2,7 @@ import DobSelector from "@/components/common/DobSelector";
 
 
 
+
 const PsychicDestinyPage = () => {
   return (
     <div>

@@ -9,8 +9,8 @@ const Home = () => {
  const router = useRouter()
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 ">
-      <h1 className="text-2xl font-bold mb-4 text-bold text-brand-700">Eyes on Number</h1>
-      <div className="flex flex-col gap-4 p-8 font-light">
+      <h1 className="text-3xl font-bold mb-4 text-bold text-brand-700">Eyes on Number</h1>
+      <div className="flex flex-col gap-4 p-8 font-light text-brand-700">
         <text>
           Welcome to eyesonnumber, where the mystical world of numerology and
           astrology comes alive! Discover your Mulank (Birth Number) and

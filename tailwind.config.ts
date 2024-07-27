@@ -10,9 +10,6 @@ const config = {
 	],
   prefix: "",
   theme: {
-    fontFamily:{
-      'eon': ['Helvetica', 'Arial', 'sans-serif']
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -22,17 +19,6 @@ const config = {
     },
     extend: {
       colors: {
-        'eon': {
-          100: '#f1e5ff',
-          200: '#f8ebff',
-          300: '#e7d6f0',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
-        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

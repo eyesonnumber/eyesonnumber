@@ -1,4 +1,5 @@
-import DobSelector from "@/src/components/DobSelector";
+import DobSelector from "@/components/common/DobSelector";
+
 
 
 const PsychicDestinyPage = () => {

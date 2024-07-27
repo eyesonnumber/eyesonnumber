@@ -1,3 +1,5 @@
+
+
 import Link from "next/link";
 import "../../styles/globals.css";
 
@@ -22,8 +24,7 @@ const Home = () => {
           href="/psychic-destiny"
           className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-48 text-center"
         >
-        
-          Go to DobSelector
+          Go to DOB Calculator
         </Link>
         <Link
           href="/name-calculator"

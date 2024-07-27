@@ -4,14 +4,22 @@ import Header from "@/components/common/Header";
 import "../../styles/globals.css";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import numerologyBg from '@/src/app/assets/images/astrology-circle-orance-dots.png'
+import { cn } from "@/lib/utils";
 
 
 const Home = () => {
  const router = useRouter()
   return (
-    <div className="flex flex-col items-center min-h-screen p-4 ">
+    <div style={{backgroundImage: `url(${numerologyBg}) !important`}} className={cn("flex flex-col items-center min-h-screen p-4 bg-cover bg-center " )}>
       <Header />
-      <h1 className="text-3xl font-bold mb-4 text-bold text-brand-700 mt-20">Eyes on Number</h1>
+      <div className="text-5xl font-extrabold ">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-blue-800">
+          Eyes on Number
+        </span>
+      </div>
+
+      
       <div className="flex flex-col gap-8 p-8 font-light text-brand-700">
         <text className="w-[80dvw]">
           Welcome to eyesonnumber, where the mystical world of numerology and

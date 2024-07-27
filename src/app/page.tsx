@@ -1,5 +1,6 @@
 // pages/index.tsx
 import Link from "next/link";
+import '../../styles/globals.css'
 
 const Home = () => {
   return (

@@ -1,5 +1,33 @@
-import { chaldeanMap } from "@/lib/constant";
 import { useState } from "react";
+
+const chaldeanMap: { [key: string]: number } = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+  e: 5,
+  f: 8,
+  g: 3,
+  h: 5,
+  i: 1,
+  j: 1,
+  k: 2,
+  l: 3,
+  m: 4,
+  n: 5,
+  o: 7,
+  p: 8,
+  q: 1,
+  r: 2,
+  s: 3,
+  t: 4,
+  u: 6,
+  v: 6,
+  w: 6,
+  x: 5,
+  y: 1,
+  z: 7,
+};
 
 const calculateChaldean = (name: string) => {
   return name
@@ -7,6 +35,14 @@ const calculateChaldean = (name: string) => {
     .split("")
     .filter((char) => char in chaldeanMap)
     .reduce((sum, char) => sum + chaldeanMap[char], 0);
+};
+
+const getChaldeanValues = (name: string) => {
+  return name
+    .toLowerCase()
+    .split("")
+    .filter((char) => char in chaldeanMap)
+    .map((char) => ({ char, value: chaldeanMap[char] }));
 };
 
 const reduceToSingleDigit = (num: number): number => {
@@ -21,46 +57,79 @@ const reduceToSingleDigit = (num: number): number => {
 };
 
 const NameCalculator = () => {
-  const [name, setName] = useState<string>("");
-  const [numerologyValue, setNumerologyValue] = useState<number | null>(null);
-  const [error, setError] = useState<string>("");
+  const [fullName, setFullName] = useState<string>("");
+  const [result, setResult] = useState<{
+    nameValues: {
+      name: string;
+      value: number;
+      charValues: { char: string; value: number }[];
+    }[];
+    sumValue: number | null;
+    singleDigitValue: number | null;
+    error: string | null;
+  }>({
+    nameValues: [],
+    sumValue: null,
+    singleDigitValue: null,
+    error: null,
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFullName(e.target.value);
+  };
 
   const handleCalculate = () => {
-    if (name.trim() === "") {
-      setError("Please enter a name.");
+    if (fullName.trim() === "") {
+      setResult((prev) => ({ ...prev, error: "Please enter your full name." }));
       return;
     }
 
-    const value = calculateChaldean(name);
-    const singleDigitValue = reduceToSingleDigit(value);
+    const nameParts = fullName.trim().split(/\s+/);
+    const nameValues = nameParts.map((name) => ({
+      name,
+      value: calculateChaldean(name),
+      charValues: getChaldeanValues(name),
+    }));
+    const sumValue = nameValues.reduce((acc, curr) => acc + curr.value, 0);
+    const singleDigitValue = reduceToSingleDigit(sumValue);
 
-    setNumerologyValue(singleDigitValue);
-    setError("");
+    setResult({
+      nameValues,
+      sumValue,
+      singleDigitValue,
+      error: null,
+    });
   };
 
   const handleReset = () => {
-    setName("");
-    setNumerologyValue(null);
-    setError("");
+    setFullName("");
+    setResult({
+      nameValues: [],
+      sumValue: null,
+      singleDigitValue: null,
+      error: null,
+    });
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-md shadow-md max-w-md w-full">
         <div className="flex-col flex">
-          <label htmlFor="name" className="text-lg font-medium mb-2">
-            Your Name:
+          <label htmlFor="fullName" className="text-lg font-medium mb-2">
+            Full Name:
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={name}
-            placeholder="Enter your name"
-            onChange={(e) => setName(e.target.value)}
+            id="fullName"
+            name="fullName"
+            value={fullName}
+            placeholder="Enter your full name"
+            onChange={handleInputChange}
             className="w-full p-2 border border-gray-300 rounded-md"
           />
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          {result.error && (
+            <p className="text-red-500 text-sm mt-2">{result.error}</p>
+          )}
           <div className="flex mt-4 space-x-4">
             <button
               onClick={handleCalculate}
@@ -75,11 +144,51 @@ const NameCalculator = () => {
               Reset
             </button>
           </div>
-          {numerologyValue !== null && (
+          {result.sumValue !== null && (
             <div className="mt-4">
-              <p className="text-lg font-semibold">
-                Numerology Value: {numerologyValue}
-              </p>
+              {result.nameValues.map((item, index) => (
+                <div key={index} className="mb-4">
+                  <div className="flex space-x-2">
+                    {item.name.split("").map((char, charIndex) => (
+                      <span key={charIndex} className="text-xl font-semibold">
+                        {char}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex space-x-2">
+                    {item.charValues.map((charValue, charIndex) => (
+                      <span
+                        key={charIndex}
+                        className="text-xl font-semibold text-red-500"
+                      >
+                        {charValue.value}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-2">
+                    <span className="text-lg font-semibold">{item.name}:</span>
+                    <span className="text-lg font-semibold text-red-500">
+                      {item.value}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              <div className="flex items-center space-x-2 mt-2">
+                <span className="text-lg font-semibold">
+                  Compound Name Number:
+                </span>
+                <span className="text-lg font-semibold text-red-500">
+                  {result.sumValue}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2 mt-2">
+                <span className="text-lg font-semibold">
+                  Name Number/ Namank:
+                </span>
+                <span className="text-lg font-semibold text-red-500">
+                  {result.singleDigitValue}
+                </span>
+              </div>
             </div>
           )}
         </div>

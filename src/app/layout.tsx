@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={rubik.className}>
-      <body>{children}</body>
+      <body className='bg-brand-100'>{children}</body>
     </html>
   )
 }

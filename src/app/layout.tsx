@@ -1,6 +1,7 @@
 import "../../styles/globals.css";
 import { Rubik } from "next/font/google";
 import Header from "@/components/common/Header"; // Update the path if necessary
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const rubik = Rubik({
   weight: ["300", "400", "600", "800"],
@@ -23,7 +24,7 @@ export default function RootLayout({
       <link rel="icon" href="/favicon.ico" />
       <body className="bg-brand-50 overflow-hidden">
         <Header />
-        <main className="pt-16">{children}</main>{" "}
+        <main className="pt-16">{children}</main> <SpeedInsights />
         {/* Add padding to prevent overlap */}
       </body>
     </html>

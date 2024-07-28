@@ -94,7 +94,6 @@ const DobSelector = () => {
       error: null,
     });
   };
-  
 
   return (
     <div className="flex w-full justify-center min-h-screen bg-gray-100 m-4">
@@ -124,7 +123,7 @@ const DobSelector = () => {
             onPaste={(e) => e.preventDefault()}
             onDrag={(e) => e.preventDefault()}
             onDrop={(e) => e.preventDefault()}
-            className="w-72 p-2 border border-gray-300 rounded-md"
+            className="w-72 p-2 border border-gray-300 rounded-md focus:border-brand-500 focus:outline-none"
           />
           {result.error && (
             <p className="text-red-500 text-sm mt-2">{result.error}</p>
@@ -146,21 +145,25 @@ const DobSelector = () => {
           {result.mulank !== null && result.bhagyank !== null && (
             <div className="mt-16 justify-center">
               <div className="flex gap-4">
-                <text className="text-xl">Mulank (Psychic) Number:</text> 
-                <text className="font-bold text-xl text-brand-400">{result.mulank}</text> 
+                <text className="text-xl">Mulank (Psychic) Number:</text>
+                <text className="font-bold text-xl text-brand-400">
+                  {result.mulank}
+                </text>
               </div>
               <div className="flex gap-4">
-                <text className="text-xl">Bhagyank (Destiny) Number: </text> 
-                <text className="font-bold text-xl text-brand-500">{result.bhagyank}</text> 
+                <text className="text-xl">Bhagyank (Destiny) Number: </text>
+                <text className="font-bold text-xl text-brand-500">
+                  {result.bhagyank}
+                </text>
               </div>
-             
+
               <div className="flex mt-16 gap-16 w-[80dvw] relative ">
                 <div className="max-w-[50%]">
                   {" "}
-                  <p className="text-lg font-bold text-brand-400">Mulank ({result.mulank})</p>
-                  <p className="text-md text-md">
-                    {result.mulankDescription} 
+                  <p className="text-lg font-bold text-brand-400">
+                    Mulank ({result.mulank})
                   </p>
+                  <p className="text-md text-md">{result.mulankDescription}</p>
                 </div>
                 <div className="max-w-[50%]">
                   {" "}

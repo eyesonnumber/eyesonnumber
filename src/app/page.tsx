@@ -9,7 +9,6 @@ const Home = () => {
   const router = useRouter();
   return (
     <div className="flex flex-col items-center min-h-screen p-4 ">
-      <Header />
       <h1 className="text-3xl font-bold mb-4 text-bold text-brand-700 mt-20">
         Eyes on Number
       </h1>

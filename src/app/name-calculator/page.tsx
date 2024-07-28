@@ -3,10 +3,6 @@
 import NameCalculator from "@/components/common/NameCalculator";
 
 
-
-
-
-
 const NameCalculatorPage = () => {
   return (
     <div>

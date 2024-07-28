@@ -1,6 +1,7 @@
 import { chaldeanMap, numberDescriptions } from "@/lib/constant";
 import { getRandomDescription } from "@/lib/utils";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 const calculateChaldean = (name: string) => {
   return name
@@ -92,8 +93,8 @@ const NameCalculator = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-md shadow-md max-w-md w-full">
+    <div className="flex m-4  min-h-screen bg-gray-100">
+      <div className="bg-white p-8 w-full">
         <div className="flex-col flex">
           <label htmlFor="fullName" className="text-lg font-medium mb-2">
             Full Name:
@@ -105,73 +106,78 @@ const NameCalculator = () => {
             value={fullName}
             placeholder="Enter your full name"
             onChange={handleInputChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-72 p-2 border border-gray-300 rounded-md"
           />
           {result.error && (
             <p className="text-red-500 text-sm mt-2">{result.error}</p>
           )}
           <div className="flex mt-4 space-x-4">
-            <button
+            <Button
               onClick={handleCalculate}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out"
             >
               Calculate
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={handleReset}
-              className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+              className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out"
             >
               Reset
-            </button>
+            </Button>
           </div>
           {result.sumValue !== null && (
-            <div className="mt-4">
-              {result.nameValues.map((item, index) => (
-                <div key={index} className="mb-4">
-                  <div className="flex space-x-2">
-                    {item.name.split("").map((char, charIndex) => (
-                      <span key={charIndex} className="text-xl font-semibold">
-                        {char}
+            <div className='flex gap-8 mt-12'>
+             
+              <div className="mt-4 flex flex-col w-[30%]">
+                {result.nameValues.map((item, index) => (
+                  <div key={index} className="mb-4">
+                    <div className="flex space-x-2">
+                      {item.name.split("").map((char, charIndex) => (
+                        <span key={charIndex} className="text-xl font-semibold">
+                          {char}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex space-x-2">
+                      {item.charValues.map((charValue, charIndex) => (
+                        <span
+                          key={charIndex}
+                          className="text-xl font-semibold text-red-500"
+                        >
+                          {charValue.value}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-2">
+                      <span className="text-lg mr-2">
+                        {item.name}:
                       </span>
-                    ))}
-                  </div>
-                  <div className="flex space-x-2">
-                    {item.charValues.map((charValue, charIndex) => (
-                      <span
-                        key={charIndex}
-                        className="text-xl font-semibold text-red-500"
-                      >
-                        {charValue.value}
+                      <span className="text-xl font-bold text-brand-500">
+                        {item.value}
                       </span>
-                    ))}
+                    </div>
                   </div>
-                  <div className="mt-2">
-                    <span className="text-lg font-semibold">{item.name}:</span>
-                    <span className="text-lg font-semibold text-red-500">
-                      {item.value}
-                    </span>
-                  </div>
+                ))}
+                <div className="flex items-center space-x-2 mt-2">
+                  <span className="text-lg ">
+                    Compound Name Number:
+                  </span>
+                  <span className="text-lg font-semibold text-brand-600">
+                    {result.sumValue}
+                  </span>
                 </div>
-              ))}
-              <div className="flex items-center space-x-2 mt-2">
-                <span className="text-lg font-semibold">
-                  Compound Name Number:
-                </span>
-                <span className="text-lg font-semibold text-red-500">
-                  {result.sumValue}
-                </span>
+                <div className="flex items-center space-x-2 mt-2">
+                  <span className="text-lg ">
+                    Name Number/ Namank:
+                  </span>
+                  <span className="text-lg font-bold text-brand-500">
+                    {result.singleDigitValue}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 mt-2">
-                <span className="text-lg font-semibold">
-                  Name Number/ Namank:
-                </span>
-                <span className="text-lg font-semibold text-red-500">
-                  {result.singleDigitValue}
-                </span>
-              </div>
-              <div className="mt-4">
-                <span className="text-lg font-semibold">Description:</span>
-                <p className="text-lg font-semibold text-blue-500">
+              <div className="mt-4 max-w-[50%]">
+                <span className="text-lg font-semibold text-brand-500">Description:</span>
+                <p className="text-md">
                   {result.description}
                 </p>
               </div>

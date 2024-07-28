@@ -1,6 +1,7 @@
 import { numberDescriptions } from "@/lib/constant";
 import { getRandomDescription } from "@/lib/utils";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 const DobSelector = () => {
   const [dob, setDob] = useState<string>("");
@@ -93,14 +94,19 @@ const DobSelector = () => {
       error: null,
     });
   };
+  
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-md shadow-md max-w-md w-full">
+    <div className="flex w-full justify-center min-h-screen bg-gray-100 m-4">
+      <div className="bg-white p-8 rounded-md w-full">
         <div className="flex-col flex">
-          <label htmlFor="bdt" className="text-lg font-medium mb-2">
-            Your Birthdate:
+          <label htmlFor="bdt" className="text-lg font-bold mb-2">
+            Enter Your Birthdate:
           </label>
+          <text className="text-brand-700 text-sm mb-4 max-w-[30dvw]">
+            Enter your date of birth to know about your natal numbers, planets
+            and significant details about your life path and destiny
+          </text>
           <input
             type="text"
             id="bdt"
@@ -118,39 +124,54 @@ const DobSelector = () => {
             onPaste={(e) => e.preventDefault()}
             onDrag={(e) => e.preventDefault()}
             onDrop={(e) => e.preventDefault()}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-72 p-2 border border-gray-300 rounded-md"
           />
           {result.error && (
             <p className="text-red-500 text-sm mt-2">{result.error}</p>
           )}
           <div className="flex mt-4 space-x-4">
-            <button
+            <Button
               onClick={handleCalculate}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out"
             >
               Calculate
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={handleReset}
-              className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+              className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out"
             >
               Reset
-            </button>
+            </Button>
           </div>
           {result.mulank !== null && result.bhagyank !== null && (
-            <div className="mt-4">
-              <p className="text-lg font-semibold">
-                Mulank (Psychic) Number: {result.mulank}
-              </p>
-              <p className="text-lg font-semibold">
-                Bhagyank (Destiny) Number: {result.bhagyank}
-              </p>
-              <p className="text-lg font-semibold">
-                Mulank Description: {result.mulankDescription}
-              </p>
-              <p className="text-lg font-semibold">
-                Bhagyank Description: {result.bhagyankDescription}
-              </p>
+            <div className="mt-16 justify-center">
+              <div className="flex gap-4">
+                <text className="text-xl">Mulank (Psychic) Number:</text> 
+                <text className="font-bold text-xl text-brand-400">{result.mulank}</text> 
+              </div>
+              <div className="flex gap-4">
+                <text className="text-xl">Bhagyank (Destiny) Number: </text> 
+                <text className="font-bold text-xl text-brand-500">{result.bhagyank}</text> 
+              </div>
+             
+              <div className="flex mt-16 gap-16 w-[80dvw] relative ">
+                <div className="max-w-[50%]">
+                  {" "}
+                  <p className="text-lg font-bold text-brand-400">Mulank ({result.mulank})</p>
+                  <p className="text-md text-md">
+                    {result.mulankDescription} 
+                  </p>
+                </div>
+                <div className="max-w-[50%]">
+                  {" "}
+                  <p className="text-lg font-semibold text-brand-500">
+                    Bhagyank ({result.bhagyank})
+                  </p>
+                  <p className="text-md text-md">
+                    {result.bhagyankDescription}
+                  </p>
+                </div>
+              </div>
             </div>
           )}
         </div>

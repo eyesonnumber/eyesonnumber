@@ -99,7 +99,7 @@ const DobSelector = () => {
     <div className="flex w-full justify-center min-h-screen bg-gray-100 m-4">
       <div className="bg-white p-8 rounded-md w-full">
         <div className="flex-col flex">
-          <label htmlFor="bdt" className="text-lg font-bold mb-2">
+          <label htmlFor="bdt" className="text-2xl font-bold mb-2  ">
             Enter Your Birthdate:
           </label>
           <text className="text-brand-700 text-sm mb-4 max-w-[30dvw]">

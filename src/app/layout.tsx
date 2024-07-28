@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={rubik.className}>
       <link rel="icon" href="/favicon.ico" />
-      <body className='bg-brand-50 '>{children}</body>
+      <body className='bg-brand-50 overflow-hidden'>{children}</body>
     </html>
   )
 }

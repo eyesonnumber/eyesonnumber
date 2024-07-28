@@ -88,4 +88,5 @@ body::before {
   background-size: contain;
   animation: rotate-bg 20s linear infinite;
   z-index: -1;
+
 }

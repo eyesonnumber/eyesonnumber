@@ -67,3 +67,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes rotate-bg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 500px;
+  left: 1100px;
+  width: 450px;
+  height: 450px;
+  background: url('/assets/astrology-circle-orance-dots.png') no-repeat;
+  background-size: contain;
+  animation: rotate-bg 20s linear infinite;
+  z-index: -1;
+}

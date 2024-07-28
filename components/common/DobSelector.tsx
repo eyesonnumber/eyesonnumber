@@ -1,25 +1,33 @@
-'use client'
-
+import { numberDescriptions } from "@/lib/constant";
+import { getRandomDescription } from "@/lib/utils";
 import { useState } from "react";
 
 const DobSelector = () => {
   const [dob, setDob] = useState<string>("");
-  const [mulank, setMulank] = useState<number | null>(null);
-  const [bhagyank, setBhagyank] = useState<number | null>(null);
-  const [error, setError] = useState<string>("");
+  const [result, setResult] = useState<{
+    mulank: number | null;
+    bhagyank: number | null;
+    mulankDescription: string | null;
+    bhagyankDescription: string | null;
+    error: string | null;
+  }>({
+    mulank: null,
+    bhagyank: null,
+    mulankDescription: null,
+    bhagyankDescription: null,
+    error: null,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Ensure the input value is formatted as DD/MM/YYYY and only numeric characters with slashes
     if (/^[0-9/]*$/.test(value) && value.length <= 10) {
       setDob(value);
-      setError("");
+      setResult((prev) => ({ ...prev, error: null }));
     }
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let value = (e.target as HTMLInputElement).value;
-    // Add slashes at the appropriate positions
     if (e.key !== "Backspace") {
       if (value.length === 2 || value.length === 5) {
         value += "/";
@@ -29,10 +37,12 @@ const DobSelector = () => {
   };
 
   const handleCalculate = () => {
-    // Check if the dob is in correct format DD/MM/YYYY
     const dobRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
     if (!dobRegex.test(dob)) {
-      setError("Please enter a valid birthdate in DD/MM/YYYY format.");
+      setResult((prev) => ({
+        ...prev,
+        error: "Please enter a valid birthdate in DD/MM/YYYY format.",
+      }));
       return;
     }
 
@@ -54,20 +64,34 @@ const DobSelector = () => {
       return num;
     };
 
-    const calculateMulank = (day: number) => reduceToSingleDigit(day);
-    const calculateBhagyank = (day: number, month: number, year: number) =>
-      reduceToSingleDigit(day + month + year);
+    const mulank = reduceToSingleDigit(day);
+    const bhagyank = reduceToSingleDigit(day + month + year);
 
-    setMulank(calculateMulank(day));
-    setBhagyank(calculateBhagyank(day, month, year));
-    setError("");
+    const mulankDescription = getRandomDescription(
+      numberDescriptions[mulank].psychic
+    );
+    const bhagyankDescription = getRandomDescription(
+      numberDescriptions[bhagyank].destiny
+    );
+
+    setResult({
+      mulank,
+      bhagyank,
+      mulankDescription,
+      bhagyankDescription,
+      error: null,
+    });
   };
 
   const handleReset = () => {
     setDob("");
-    setMulank(null);
-    setBhagyank(null);
-    setError("");
+    setResult({
+      mulank: null,
+      bhagyank: null,
+      mulankDescription: null,
+      bhagyankDescription: null,
+      error: null,
+    });
   };
 
   return (
@@ -96,7 +120,9 @@ const DobSelector = () => {
             onDrop={(e) => e.preventDefault()}
             className="w-full p-2 border border-gray-300 rounded-md"
           />
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          {result.error && (
+            <p className="text-red-500 text-sm mt-2">{result.error}</p>
+          )}
           <div className="flex mt-4 space-x-4">
             <button
               onClick={handleCalculate}
@@ -111,13 +137,19 @@ const DobSelector = () => {
               Reset
             </button>
           </div>
-          {mulank !== null && bhagyank !== null && (
+          {result.mulank !== null && result.bhagyank !== null && (
             <div className="mt-4">
               <p className="text-lg font-semibold">
-                Mulank (Psychic) Number: {mulank}
+                Mulank (Psychic) Number: {result.mulank}
               </p>
               <p className="text-lg font-semibold">
-                Bhagyank (Destiny) Number: {bhagyank}
+                Bhagyank (Destiny) Number: {result.bhagyank}
+              </p>
+              <p className="text-lg font-semibold">
+                Mulank Description: {result.mulankDescription}
+              </p>
+              <p className="text-lg font-semibold">
+                Bhagyank Description: {result.bhagyankDescription}
               </p>
             </div>
           )}

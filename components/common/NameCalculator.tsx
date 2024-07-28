@@ -1,33 +1,6 @@
+import { chaldeanMap, numberDescriptions } from "@/lib/constant";
+import { getRandomDescription } from "@/lib/utils";
 import { useState } from "react";
-
-const chaldeanMap: { [key: string]: number } = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4,
-  e: 5,
-  f: 8,
-  g: 3,
-  h: 5,
-  i: 1,
-  j: 1,
-  k: 2,
-  l: 3,
-  m: 4,
-  n: 5,
-  o: 7,
-  p: 8,
-  q: 1,
-  r: 2,
-  s: 3,
-  t: 4,
-  u: 6,
-  v: 6,
-  w: 6,
-  x: 5,
-  y: 1,
-  z: 7,
-};
 
 const calculateChaldean = (name: string) => {
   return name
@@ -66,11 +39,13 @@ const NameCalculator = () => {
     }[];
     sumValue: number | null;
     singleDigitValue: number | null;
+    description: string | null;
     error: string | null;
   }>({
     nameValues: [],
     sumValue: null,
     singleDigitValue: null,
+    description: null,
     error: null,
   });
 
@@ -92,11 +67,15 @@ const NameCalculator = () => {
     }));
     const sumValue = nameValues.reduce((acc, curr) => acc + curr.value, 0);
     const singleDigitValue = reduceToSingleDigit(sumValue);
+    const description = numberDescriptions[singleDigitValue]?.nameNumber
+      ? getRandomDescription(numberDescriptions[singleDigitValue].nameNumber)
+      : "No description available";
 
     setResult({
       nameValues,
       sumValue,
       singleDigitValue,
+      description,
       error: null,
     });
   };
@@ -107,6 +86,7 @@ const NameCalculator = () => {
       nameValues: [],
       sumValue: null,
       singleDigitValue: null,
+      description: null,
       error: null,
     });
   };
@@ -188,6 +168,12 @@ const NameCalculator = () => {
                 <span className="text-lg font-semibold text-red-500">
                   {result.singleDigitValue}
                 </span>
+              </div>
+              <div className="mt-4">
+                <span className="text-lg font-semibold">Description:</span>
+                <p className="text-lg font-semibold text-blue-500">
+                  {result.description}
+                </p>
               </div>
             </div>
           )}

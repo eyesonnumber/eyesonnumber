@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={rubik.className}>
       <link rel="icon" href="/favicon.ico" />
-      <body className="bg-brand-50 overflow-hidden">
+      <body className="bg-brand-50">
         <Header />
         <main className="pt-16">{children}</main> <SpeedInsights />
         {/* Add padding to prevent overlap */}

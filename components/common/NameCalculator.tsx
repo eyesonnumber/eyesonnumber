@@ -96,8 +96,8 @@ const NameCalculator = () => {
     <div className="flex m-4  min-h-screen bg-gray-100">
       <div className="bg-white p-8 w-full">
         <div className="flex-col flex">
-          <label htmlFor="fullName" className="text-lg font-medium mb-2">
-            Full Name:
+          <label htmlFor="fullName" className="text-xl font-bold mb-2">
+            Enter your Full Name:
           </label>
           <input
             type="text"

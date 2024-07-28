@@ -114,7 +114,7 @@ const NameCalculator = () => {
           <div className="flex mt-4 space-x-4">
             <Button
               onClick={handleCalculate}
-              className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out"
+              className="bg-brand-600 text-brand-50 hover:scale-105 transform transition duration-300 ease-in-out hover:bg-brand-800"
             >
               Calculate
             </Button>

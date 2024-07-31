@@ -7,7 +7,7 @@ const calculateChaldean = (name: string) => {
   return name
     .toLowerCase()
     .split("")
-    .filter((char) => char in chaldeanMap)
+      .filter((char) => char in chaldeanMap)
     .reduce((sum, char) => sum + chaldeanMap[char], 0);
 };
 
@@ -126,8 +126,7 @@ const NameCalculator = () => {
             </Button>
           </div>
           {result.sumValue !== null && (
-            <div className='flex gap-8 mt-12'>
-             
+            <div className="flex gap-8 mt-12">
               <div className="mt-4 flex flex-col w-[30%]">
                 {result.nameValues.map((item, index) => (
                   <div key={index} className="mb-4">
@@ -149,9 +148,7 @@ const NameCalculator = () => {
                       ))}
                     </div>
                     <div className="mt-2">
-                      <span className="text-lg mr-2">
-                        {item.name}:
-                      </span>
+                      <span className="text-lg mr-2">{item.name}:</span>
                       <span className="text-xl font-bold text-brand-500">
                         {item.value}
                       </span>
@@ -159,27 +156,23 @@ const NameCalculator = () => {
                   </div>
                 ))}
                 <div className="flex items-center space-x-2 mt-2">
-                  <span className="text-lg ">
-                    Compound Name Number:
-                  </span>
+                  <span className="text-lg ">Compound Name Number:</span>
                   <span className="text-lg font-semibold text-brand-600">
                     {result.sumValue}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2 mt-2">
-                  <span className="text-lg ">
-                    Name Number/ Namank:
-                  </span>
+                  <span className="text-lg ">Name Number/ Namank:</span>
                   <span className="text-lg font-bold text-brand-500">
                     {result.singleDigitValue}
                   </span>
                 </div>
               </div>
               <div className="mt-4 max-w-[50%]">
-                <span className="text-lg font-semibold text-brand-500">Description:</span>
-                <p className="text-md">
-                  {result.description}
-                </p>
+                <span className="text-lg font-semibold text-brand-500">
+                  Description:
+                </span>
+                <p className="text-md">{result.description}</p>
               </div>
             </div>
           )}

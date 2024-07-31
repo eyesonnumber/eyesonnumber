@@ -77,16 +77,21 @@
   }
 }
 
+
 body::before {
   content: "";
   position: absolute;
-  top: 500px;
-  left: 1100px;
-  width: 450px;
-  height: 450px;
-  background: url('/assets/astrology-circle-orance-dots.png') no-repeat;
+  top: 60dvh; 
+  left: 80dvw; 
+  width: 45dvw; 
+  height: 45dvw; 
+  max-width: 450px; 
+  max-height: 450px; 
+  background: url('/assets/astrology-circle-orance-dots.png') no-repeat center center;
   background-size: contain;
   animation: rotate-bg 20s linear infinite;
   z-index: -1;
-
+  transform: translate(-50%, -50%);
+  /* Clipping to prevent overflow */
+  clip-path: circle(50% at 50% 50%);
 }

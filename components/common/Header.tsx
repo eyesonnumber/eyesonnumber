@@ -18,25 +18,25 @@ const Header: React.FC = () => {
         <Link href="/">
           <div
             className={`font-bold text-brand-200 hover:text-brand-50 ${
-              isMobile ? "text-lg" : "md:text-xl"
+              isMobile ? "text-xl" : "md:text-xl"
             }`}
           >
             Eyes on Number
           </div>
         </Link>
         <div className={`mt-4 md:mt-0 ${isMobile ? "" : "md:text-base"}`}>
-          <Link href="/" className="mr-4 text-brand-200 hover:text-brand-50">
+          <Link href="/" className="mr-4 text-brand-200 hover:text-brand-50 text-sm">
             Home
           </Link>
           <Link
             href="/about"
-            className="mr-4 text-brand-200 hover:text-brand-50"
+            className="mr-4 text-brand-200 hover:text-brand-50 text-sm"
           >
             About
           </Link>
           <Link
             href="/contact-us"
-            className="text-brand-200 hover:text-brand-50"
+            className="text-brand-200 hover:text-brand-50 text-sm"
           >
             Contact Us
           </Link>

@@ -77,12 +77,16 @@
   }
 }
 
+body{
+  overflow-x:hidden
+}
+
 
 body::before {
   content: "";
-  position: absolute;
-  top: 60dvh; 
-  left: 80dvw; 
+  position: fixed;
+  top: 67dvh; 
+  left: 78dvw; 
   width: 45dvw; 
   height: 45dvw; 
   max-width: 450px; 
@@ -92,6 +96,5 @@ body::before {
   animation: rotate-bg 20s linear infinite;
   z-index: -1;
   transform: translate(-50%, -50%);
-  /* Clipping to prevent overflow */
   clip-path: circle(50% at 50% 50%);
 }

@@ -126,10 +126,10 @@ const NameCalculator = () => {
             </Button>
           </div>
           {result.sumValue !== null && (
-            <div className="flex gap-8 mt-12">
-              <div className="mt-4 flex flex-col w-[30%]">
+            <div className="flex md:flex-row flex-col gap-8 md:mt-12">
+              <div className="mt-4 flex flex-row md:flex-col max-w-[80vw] flex-wrap gap-8 md:gap-0 md:w-[30%]">
                 {result.nameValues.map((item, index) => (
-                  <div key={index} className="mb-4">
+                  <div key={index} className="md:mb-4">
                     <div className="flex space-x-2">
                       {item.name.split("").map((char, charIndex) => (
                         <span key={charIndex} className="text-xl font-semibold">
@@ -155,7 +155,7 @@ const NameCalculator = () => {
                     </div>
                   </div>
                 ))}
-                <div className="flex items-center space-x-2 mt-2">
+                <div className="flex items-center space-x-2 md:mt-2">
                   <span className="text-lg ">Compound Name Number:</span>
                   <span className="text-lg font-semibold text-brand-600">
                     {result.sumValue}
@@ -168,7 +168,7 @@ const NameCalculator = () => {
                   </span>
                 </div>
               </div>
-              <div className="mt-4 max-w-[50%]">
+              <div className="md:mt-4 w-full md:max-w-[50%]">
                 <span className="text-lg font-semibold text-brand-500">
                   Description:
                 </span>

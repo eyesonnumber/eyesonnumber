@@ -102,7 +102,7 @@ const DobSelector = () => {
           <label htmlFor="bdt" className="text-2xl font-bold mb-2  ">
             Enter Your Birthdate:
           </label>
-          <text className="text-brand-700 text-sm mb-4 max-w-[30dvw]">
+          <text className="text-brand-700 text-sm mb-4 w-full md:max-w-[30dvw]">
             Enter your date of birth to know about your natal numbers, planets
             and significant details about your life path and destiny
           </text>
@@ -145,27 +145,27 @@ const DobSelector = () => {
           {result.mulank !== null && result.bhagyank !== null && (
             <div className="mt-16 justify-center">
               <div className="flex gap-4">
-                <text className="text-xl">Mulank (Psychic) Number:</text>
-                <text className="font-bold text-xl text-brand-400">
+                <text className="text-sm md:text-xl">Mulank (Psychic) Number:</text>
+                <text className="font-bold text-sm md:text-xl text-brand-400">
                   {result.mulank}
                 </text>
               </div>
               <div className="flex gap-4">
-                <text className="text-xl">Bhagyank (Destiny) Number: </text>
-                <text className="font-bold text-xl text-brand-500">
+                <text className="text-sm md:text-xl">Bhagyank (Destiny) Number: </text>
+                <text className="font-bold text-sm md:text-xl text-brand-500">
                   {result.bhagyank}
                 </text>
               </div>
 
-              <div className="flex mt-16 gap-16 w-[80dvw] relative ">
-                <div className="max-w-[50%]">
+              <div className="flex md:flex-row flex-col mt-16 gap-16 w-[80dvw] relative ">
+                <div className="w-full md:max-w-[50%]">
                   {" "}
                   <p className="text-lg font-bold text-brand-400">
                     Mulank ({result.mulank})
                   </p>
                   <p className="text-md text-md">{result.mulankDescription}</p>
                 </div>
-                <div className="max-w-[50%]">
+                <div className="w-full md:max-w-[50%]">
                   {" "}
                   <p className="text-lg font-semibold text-brand-500">
                     Bhagyank ({result.bhagyank})

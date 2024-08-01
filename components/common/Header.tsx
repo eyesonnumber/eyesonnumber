@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
 import React from "react";
 import Link from "next/link";
-import { useWindowDimensions } from '@/src/app/hooks/useWindowDimension.hook'
+import { useWindowDimensions } from "@/src/hooks/useWindowDimension.hook";
 
 const Header: React.FC = () => {
   const { width } = useWindowDimensions();
@@ -25,7 +25,10 @@ const Header: React.FC = () => {
           </div>
         </Link>
         <div className={`mt-4 md:mt-0 ${isMobile ? "" : "md:text-base"}`}>
-          <Link href="/" className="mr-4 text-brand-200 hover:text-brand-50 text-sm">
+          <Link
+            href="/"
+            className="mr-4 text-brand-200 hover:text-brand-50 text-sm"
+          >
             Home
           </Link>
           <Link

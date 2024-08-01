@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/components/common/Header";
 import "../../styles/globals.css";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -14,7 +13,7 @@ const Home = () => {
       </h1>
       <div className="flex flex-col gap-8 p-8 font-light text-brand-700">
         <text className="md:w-[80dvw] w-full md:p-0 px-4 text-sm md:text-lg ">
-          Welcome to eyesonnumber, where the mystical world of numerology and
+          Welcome to Eyes on Number, where the mystical world of numerology and
           astrology comes alive! Discover your Mulank (Birth Number) and
           Bhagyank (Destiny Number) to unlock the secrets of your personality
           and life path. Delve into the significance of numerology and

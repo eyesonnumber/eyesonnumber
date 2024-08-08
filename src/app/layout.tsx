@@ -24,7 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={rubik.className}>
-      <link rel="icon" href="/favicon.ico" />
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5069018077601225"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <body className="bg-brand-50">
         <Header />
         <main className="pt-16">{children}</main> <SpeedInsights />

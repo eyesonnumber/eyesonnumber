@@ -48,11 +48,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5069018077601225"
-          crossOrigin="anonymous"
-        ></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4810342824101459"
+     crossorigin="anonymous"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
